@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMX Live Search - Go Backend</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 HTMX Live Search</h1>
+            <p class="subtitle">Server-Driven UI with Go + HTMX</p>
+        </header>
+
+        <div class="search-box">
+            <input 
+                type="text" 
+                name="q" 
+                placeholder="Cari nama, email, atau kota..."
+                hx-get="/search"
+                hx-trigger="keyup changed delay:300ms"
+                hx-target="#search-results"
+                hx-indicator="#loading"
+                autocomplete="off"
+            >
+            
+            <!-- Loading indicator -->
+            <div id="loading" class="htmx-indicator">
+                <div class="spinner"></div>
+                <span>Searching...</span>
+            </div>
+        </div>
+
+        <!-- Container untuk hasil search -->
+        <div id="search-results">
+            <div class="empty-state">
+                <p>👆 Mulai ketik untuk mencari user...</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>
+                <strong>Frontend doesn't always need to be a SPA.</strong><br>
+                This project explores server-driven UI using HTMX and Go.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

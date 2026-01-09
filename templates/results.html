@@ -1,0 +1,27 @@
+{{if .Results}}
+    <div class="results-header">
+        <p>Ditemukan <strong>{{.Count}}</strong> hasil untuk "<strong>{{.Query}}</strong>"</p>
+    </div>
+    
+    <div class="results-list">
+        {{range .Results}}
+        <div class="user-card">
+            <div class="user-avatar">
+                {{slice .Name 0 1}}
+            </div>
+            <div class="user-info">
+                <h3>{{.Name}}</h3>
+                <p class="user-email">📧 {{.Email}}</p>
+                <p class="user-city">📍 {{.City}}</p>
+            </div>
+        </div>
+        {{end}}
+    </div>
+{{else}}
+    {{if .Query}}
+    <div class="no-results">
+        <p>😔 Tidak ada hasil untuk "<strong>{{.Query}}</strong>"</p>
+        <p class="hint">Coba kata kunci lain...</p>
+    </div>
+    {{end}}
+{{end}}
